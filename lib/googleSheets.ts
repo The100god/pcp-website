@@ -1,4 +1,5 @@
 // lib/googleSheets.ts
+// @typescript-eslint/no-explicit-any
 import { google } from "googleapis";
 
 const SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
@@ -15,7 +16,7 @@ const auth = new google.auth.JWT({
 
 const sheets = google.sheets({ version: "v4", auth });
 
-export async function appendToSheet(sheetName: string, values: any[][]) {
+export async function appendToSheet(sheetName: string, values: string[][]) {
 //     console.log("sheet", values)
 //     console.log("Using spreadsheet ID:", process.env.NEXT_PUBLIC_SHEET_ID);
 // console.log("Using sheet/tab name:", sheetName);

@@ -1,15 +1,17 @@
+// @typescript-eslint/no-explicit-any
 "use client";
 import { useEffect, useState } from "react";
 import { auth } from "../../lib/firebase";
 import { useRouter } from "next/navigation";
+import { User } from "firebase/auth";
 
 const adminEmails = process.env.NEXT_PUBLIC_ADMIN_EMAILS?.split(",") || [];
 
 export default function AdminPanel() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User|null>(null);
   const [students, setStudents] = useState<string[][]>([]);
   const [headers, setHeaders] = useState<string[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -23,7 +25,7 @@ export default function AdminPanel() {
       setLoading(false);
     });
     return () => unsub();
-  }, []);
+  }, [router]);
 
   const fetchStudents = async () => {
     const res = await fetch("/api/sheets?sheet=pcp");

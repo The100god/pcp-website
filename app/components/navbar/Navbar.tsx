@@ -1,21 +1,30 @@
+// @typescript-eslint/no-explicit-any
 "use client"
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { auth } from "../../../lib/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
-import imag from "../../../public/pcp-logo.jpg"
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/16/solid";
+import Image from "next/image";
 
 const adminEmails = process.env.NEXT_PUBLIC_ADMIN_EMAILS?.split(",") || [];
-
+interface userProp{
+  email:string;
+}
 export default function Navbar() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<userProp|null>(null);
   const [openSidebar, setOpenSidebar] = useState<boolean>(false);
   const router = useRouter();
 
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (u) => setUser(u));
+    const unsub = onAuthStateChanged(auth, (firebaseUser) => {
+    if (firebaseUser?.email) {
+      setUser({ email: firebaseUser.email }); // now it's always string
+    } else {
+      setUser(null);
+    }
+  });
     return () => unsub();
   }, []);
 
@@ -34,7 +43,7 @@ export default function Navbar() {
         <XMarkIcon className="h-6 w-6 text-black" />
       </div>}
       <Link href="/" className="font-bold text-2xl">
-        <img className="w-15 h-15 rounded-full" src="/pcp-logo.jpg" alt="pcp" />
+        <Image className="w-15 h-15 rounded-full" width={60} height={60} src="/pcp-logo.jpg" alt="pcp" />
       </Link>
       <div className="hidden md:flex space-x-4">
         <Link href="/vision" className="px-2 py-1 bg-green-400 hover:bg-green-300 font-medium text-black rounded">Vision</Link>

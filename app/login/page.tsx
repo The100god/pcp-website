@@ -1,4 +1,5 @@
 // pages/index.tsx
+// @typescript-eslint/no-explicit-any
 "use client";
 import { useState, useEffect } from "react";
 import { auth } from "../../lib/firebase";
@@ -8,8 +9,8 @@ import {
   onAuthStateChanged,
   updateProfile,
 } from "firebase/auth";
-import axios from "axios";
 import { useRouter } from "next/navigation";
+import Error from "next/error";
 
 export default function Home() {
   const [fullName, setFullName] = useState("");
@@ -56,6 +57,7 @@ export default function Home() {
       alert("Signup successful!");
       router.push("/home");
     } catch (error: any) {
+      console.log(error)
       alert(error.message || "Signup failed");
     } finally {
       setLoading(false);
@@ -71,7 +73,8 @@ export default function Home() {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       router.push("/home");
-    } catch (error: any) {
+    } catch (error:any) {
+      console.log("error",error)
       alert(error.message || "Login failed");
     } finally {
       setLoading(false);

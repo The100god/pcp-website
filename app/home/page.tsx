@@ -1,4 +1,5 @@
 // pages/user.tsx
+// @typescript-eslint/no-explicit-any
 "use client";
 import { useEffect, useState } from "react";
 import { auth } from "../../lib/firebase";
@@ -6,6 +7,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
+import { userType } from "../context/AuthContext";
 
 const sliderImages = [
   "/slider1.jpg",
@@ -14,20 +16,22 @@ const sliderImages = [
 ];
 
 export default function HomePage() {
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<userType|null>(null);
   const router = useRouter();
   const [currentImage, setCurrentImage] = useState(0);
   const [modalImage, setModalImage] = useState<string | null>(null);
   const [textColor, setTextColor] = useState('red');
 
   useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (u) => {
-      if (!u) {
-        router.push("/");
-      } else {
-        setUser(u);
-      }
-    });
+
+    const unsub = onAuthStateChanged(auth, (firebaseUser) => {
+    if (firebaseUser?.email) {
+      setUser({ email: firebaseUser.email }); // now it's always string
+    } else {
+      setUser(null);
+      router.push("/");
+    }
+  });
     return () => unsub();
   }, [router]);
 

@@ -9,6 +9,7 @@ import {
   Typography,
   Tooltip,
 } from "@material-tailwind/react";
+import Image from "next/image";
 
 type TeacherProps = {
   name: string;
@@ -25,7 +26,7 @@ export default function TeacherCard({ name, subject, imageUrl, socials }: Teache
   return (
     <Card className="w-80 shadow-lg" placeholder={undefined} onResize={undefined} onResizeCapture={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
       <CardHeader className="h-64 overflow-hidden" placeholder={undefined} onResize={undefined} onResizeCapture={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-        <img src={imageUrl} alt={`${name}'s profile`} className="w-full h-full object-cover" />
+        <Image src={imageUrl} alt={`${name}'s profile`} className="w-full h-full object-cover" />
       </CardHeader>
       <CardBody className="text-center" placeholder={undefined} onResize={undefined} onResizeCapture={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
         <Typography variant="h5" color="blue-gray" className="mb-2" placeholder={undefined} onResize={undefined} onResizeCapture={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>

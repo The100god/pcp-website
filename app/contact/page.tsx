@@ -1,10 +1,15 @@
+// @typescript-eslint/no-explicit-any
 "use client";
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext"; // adjust path if needed
-import axios from "axios";
 
 const adminEmails = process.env.NEXT_PUBLIC_ADMIN_EMAILS?.split(",") || [];
-
+interface Query {
+  name: string;
+  email: string;
+  message: string;
+  date: string;
+}
 export default function Contact() {
   const user = useAuth();
   const [isAdmin, setIsAdmin] = useState(false);
@@ -16,7 +21,7 @@ export default function Contact() {
   const [loading, setLoading] = useState(false);
 
   // Queries for admin
-  const [queries, setQueries] = useState<any[]>([]);
+  const [queries, setQueries] = useState<Query[]>([]);
 
   useEffect(() => {
     if (user && adminEmails.includes(user.email)) {
@@ -94,10 +99,10 @@ export default function Contact() {
           <tbody>
             {queries.length>0 && queries.map((q, i) => (
               <tr key={i} className="bg-white">
-                <td className="border px-4 py-2">{q[0]}</td>
-                <td className="border px-4 py-2">{q[1]}</td>
-                <td className="border px-4 py-2">{q[2]}</td>
-                <td className="border px-4 py-2">{q[3]}</td>
+                <td className="border px-4 py-2">{q.name}</td>
+                <td className="border px-4 py-2">{q.email}</td>
+                <td className="border px-4 py-2">{q.message}</td>
+                <td className="border px-4 py-2">{q.date}</td>
               </tr>
             ))}
           </tbody>
