@@ -11,12 +11,6 @@ import {
 } from "firebase/auth";
 import { useRouter } from "next/navigation";
 
-
-interface Error {
-  name: string;
-  message: string;
-  stack?: string;
-}
 export default function Home() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -82,6 +76,7 @@ export default function Home() {
       await signInWithEmailAndPassword(auth, email, password);
       router.push("/home");
     } catch (error: unknown) {
+  console.log("error", error);
   if (error instanceof Error) {
     alert(error.message);
   } else {
