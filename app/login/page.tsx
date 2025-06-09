@@ -10,8 +10,13 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { useRouter } from "next/navigation";
-import Error from "next/error";
 
+
+interface Error {
+  name: string;
+  message: string;
+  stack?: string;
+}
 export default function Home() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -56,10 +61,13 @@ export default function Home() {
     }
       alert("Signup successful!");
       router.push("/home");
-    } catch (error: any) {
-      console.log(error)
-      alert(error.message || "Signup failed");
-    } finally {
+    } catch (error: unknown) {
+  if (error instanceof Error) {
+    alert(error.message);
+  } else {
+    alert("Signup failed");
+  }
+} finally {
       setLoading(false);
     }
   };
@@ -73,10 +81,13 @@ export default function Home() {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       router.push("/home");
-    } catch (error:any) {
-      console.log("error",error)
-      alert(error.message || "Login failed");
-    } finally {
+    } catch (error: unknown) {
+  if (error instanceof Error) {
+    alert(error.message);
+  } else {
+    alert("Login failed");
+  }
+} finally {
       setLoading(false);
     }
   };
