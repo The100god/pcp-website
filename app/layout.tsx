@@ -39,7 +39,6 @@ export default function RootLayout({
         <AuthProvider>
         <Navbar />
         <div className="flex flex-grow w-full h-full mt-14 md:mt-20">
-
         {children}
         </div>
         <Footer />

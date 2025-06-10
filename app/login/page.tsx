@@ -93,9 +93,9 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-gray-50 px-4">
+    <div className="min-h-screen flex flex-col justify-center items-center bg-gray-50 px-4 w-full">
       <div className="max-w-md w-full bg-white p-8 rounded shadow text-inherit">
-        <h2 className="text-2xl font-bold mb-6">{isSignup ? "Sign Up" : "Login"}</h2>
+        <h2 className="text-4xl text-center font-bold mb-6">{isSignup ? "Sign Up" : "Login"}</h2>
 
         {isSignup && (
           <>
@@ -133,7 +133,7 @@ export default function Login() {
         <button
           disabled={loading}
           onClick={isSignup ? handleSignup : handleLogin}
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 cursor-pointer"
         >
           {loading ? "Please wait..." : isSignup ? "Sign Up" : "Login"}
         </button>
@@ -142,7 +142,7 @@ export default function Login() {
           {isSignup ? "Already have an account?" : "Don't have an account?"}{" "}
           <button
             onClick={() => setIsSignup(!isSignup)}
-            className="text-blue-600 underline"
+            className="text-blue-600 underline cursor-pointer"
           >
             {isSignup ? "Login" : "Sign Up"}
           </button>

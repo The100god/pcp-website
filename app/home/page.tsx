@@ -22,7 +22,7 @@ export default function HomePage() {
 
   useEffect(() => {
     if (user === null) {
-      router.push("/");
+      router.push("/login");
     }
   }, [user, router]);
   // useEffect(() => {

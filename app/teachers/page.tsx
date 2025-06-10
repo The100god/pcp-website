@@ -1,5 +1,8 @@
 "use client";
+import { useRouter } from "next/navigation";
 import TeacherCard from "../components/teachersCard/TeacherCard";
+import { useAuth } from "../context/AuthContext";
+import { useEffect } from "react";
 
 const teachers = [
   {
@@ -65,6 +68,13 @@ const teachers = [
 ];
 
 export default function TeachersPage() {
+  const user = useAuth();
+    const router = useRouter();
+    useEffect(() => {
+      if (user === null) {
+        router.push("/login");
+      }
+    }, [user, router]);
   return (
     <main className="max-w-6xl mx-auto p-6">
       <h1 className="text-4xl font-bold mb-8 text-center mt-8 md:mt-0">Our Teachers</h1>

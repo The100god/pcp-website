@@ -32,7 +32,7 @@ export default function Navbar() {
 
   const logout = () => {
     signOut(auth);
-    router.push("/");
+    router.push("/login");
   };
   console.log("user", user)
   
