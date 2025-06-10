@@ -26,7 +26,7 @@ export default function TeacherCard({ name, subject, imageUrl, socials }: Teache
   return (
     <Card className="w-80 shadow-lg" placeholder={undefined} onResize={undefined} onResizeCapture={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
       <CardHeader className="h-64 overflow-hidden" placeholder={undefined} onResize={undefined} onResizeCapture={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
-        <Image src={imageUrl} alt={`${name}'s profile`} className="w-full h-full object-cover" />
+        <Image src={imageUrl} alt={`${name}'s profile`} width={100} height={100} className="w-full h-full object-cover" />
       </CardHeader>
       <CardBody className="text-center" placeholder={undefined} onResize={undefined} onResizeCapture={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
         <Typography variant="h5" color="blue-gray" className="mb-2" placeholder={undefined} onResize={undefined} onResizeCapture={undefined} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>

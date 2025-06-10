@@ -1,6 +1,6 @@
 export default function Vision() {
   return (
-    <div className="flex flex-col justify-center items-center w-full mt-36 p-6">
+    <div className="flex flex-col justify-center items-center w-full p-6">
       <div className="flex flex-col justify-center items-center w-[80%] p-5 pb-7 bg-white shadow-md">
 
       <h1 className="text-4xl md:text-5xl font-bold mb-4 ">Our Vision</h1>

@@ -7,31 +7,34 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/16/solid";
 import Image from "next/image";
+import { useAuth } from "@/app/context/AuthContext";
 
 const adminEmails = process.env.NEXT_PUBLIC_ADMIN_EMAILS?.split(",") || [];
 interface userProp{
   email:string;
 }
 export default function Navbar() {
-  const [user, setUser] = useState<userProp|null>(null);
+  // const [user, setUser] = useState<userProp|null>(null);
+  const user = useAuth();
   const [openSidebar, setOpenSidebar] = useState<boolean>(false);
   const router = useRouter();
 
-  useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (firebaseUser) => {
-    if (firebaseUser?.email) {
-      setUser({ email: firebaseUser.email }); // now it's always string
-    } else {
-      setUser(null);
-    }
-  });
-    return () => unsub();
-  }, []);
+  // useEffect(() => {
+  //   const unsub = onAuthStateChanged(auth, (firebaseUser) => {
+  //   if (firebaseUser?.email) {
+  //     setUser({ email: firebaseUser.email }); // now it's always string
+  //   } else {
+  //     setUser(null);
+  //   }
+  // });
+  //   return () => unsub();
+  // }, []);
 
   const logout = () => {
     signOut(auth);
     router.push("/");
   };
+  console.log("user", user)
   
 
   return (
@@ -53,7 +56,7 @@ export default function Navbar() {
         {user ? (
           <>
             <Link href="/home" className="px-2 py-1 bg-green-400 hover:bg-green-300 font-medium text-black rounded">Dashboard</Link>
-            {adminEmails.includes(user.email) && <Link href="/admin" className="px-2 py-1 bg-green-400 hover:bg-green-300 font-medium text-black rounded">Admin</Link>}
+            {adminEmails?.includes(user.email) && <Link href="/admin" className="px-2 py-1 bg-green-400 hover:bg-green-300 font-medium text-black rounded">Admin</Link>}
             <button onClick={logout} className="ml-2 bg-red-500 py-1 px-2 rounded cursor-pointer">Logout</button>
           </>
         ) : (
@@ -70,7 +73,7 @@ export default function Navbar() {
           {user ? (
             <>
               <Link href="/home" className="mobile-link py-2 hover:bg-green-300" onClick={() => setOpenSidebar(false)}>Dashboard</Link>
-              {adminEmails.includes(user.email) && (
+              {adminEmails?.includes(user.email) && (
                 <Link href="/admin" className="mobile-link py-2 hover:bg-green-300" onClick={() => setOpenSidebar(false)}>Admin</Link>
               )}
               <button onClick={() => { logout(); setOpenSidebar(false); }} className="text-red-600 font-semibold mt-2">Logout</button>

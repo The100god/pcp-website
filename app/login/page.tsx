@@ -6,12 +6,12 @@ import { auth } from "../../lib/firebase";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  onAuthStateChanged,
   updateProfile,
 } from "firebase/auth";
 import { useRouter } from "next/navigation";
+import { useAuth } from "../context/AuthContext";
 
-export default function Home() {
+export default function Login() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
@@ -19,13 +19,18 @@ export default function Home() {
   const [isSignup, setIsSignup] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+  const user = useAuth()
 
-  useEffect(() => {
-    const unsub = onAuthStateChanged(auth, (user) => {
-      if (user) router.push("/home");
-    });
-    return () => unsub();
-  }, [router]);
+  useEffect(()=>{
+    if(user) router.push("/home")
+  }, [user, router])
+
+  // useEffect(() => {
+  //   const unsub = onAuthStateChanged(auth, (user) => {
+  //     if (user) router.push("/home");
+  //   });
+  //   return () => unsub();
+  // }, [router]);
 
   const handleSignup = async () => {
     if (!email || !password || !fullName || !mobile) {

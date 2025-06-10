@@ -2,52 +2,54 @@
 // @typescript-eslint/no-explicit-any
 "use client";
 import { useEffect, useState } from "react";
-import { auth } from "../../lib/firebase";
-import { onAuthStateChanged } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
-import { userType } from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
+import ContactPage from "../components/contactPage/contactPage";
+// import { auth } from "../../lib/firebase";
+// import { onAuthStateChanged } from "firebase/auth";
 
-const sliderImages = [
-  "/slider1.jpg",
-  "/slider2.jpg",
-  
-];
+const sliderImages = ["/slider1.jpg", "/slider2.jpg"];
 
 export default function HomePage() {
-  const [user, setUser] = useState<userType|null>(null);
+  const user = useAuth();
   const router = useRouter();
-  const [currentImage, setCurrentImage] = useState(0);
   const [modalImage, setModalImage] = useState<string | null>(null);
-  const [textColor, setTextColor] = useState('red');
+  const [textColor, setTextColor] = useState("red");
+  // const [user, setUser] = useState<userType | null>(null);
+  // const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
-
-    const unsub = onAuthStateChanged(auth, (firebaseUser) => {
-    if (firebaseUser?.email) {
-      setUser({ email: firebaseUser.email }); // now it's always string
-    } else {
-      setUser(null);
+    if (user === null) {
       router.push("/");
     }
-  });
-    return () => unsub();
-  }, [router]);
+  }, [user, router]);
+  // useEffect(() => {
+  //   const unsub = onAuthStateChanged(auth, (firebaseUser) => {
+  //     if (firebaseUser?.email) {
+  //       setUser({ email: firebaseUser.email }); // now it's always string
+  //     } else {
+  //       setUser(null);
+  //       router.push("/");
+  //     }
+  //   });
+  //   return () => unsub();
+  // }, [user, router]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % sliderImages.length);
-    }, 3000); // every 3 seconds
-    return () => clearInterval(interval);
-  }, []);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     setCurrentImage((prev) => (prev + 1) % sliderImages.length);
+  //   }, 3000); // every 3 seconds
+  //   return () => clearInterval(interval);
+  // }, []);
 
   if (!user) return <p className="text-center mt-8">Loading...</p>;
 
   return (
-    <div className="w-full">
+    <div className="w-full h-full">
       {/* Logo + Welcome Text */}
-      <div className="flex flex-col gap-y-6 justify-center items-center w-full text-center h-screen md:-mt-3 md:p-3">
+      <div className="flex flex-col gap-y-6 justify-center items-center w-full text-center h-[600px] md:-mt-3 md:p-3">
         <Image
           src="/pcp-logo.jpg"
           alt="PCP Logo"
@@ -55,43 +57,50 @@ export default function HomePage() {
           height={200}
           className="mx-auto rounded-full"
         />
-        <h1 className="text-6xl md:text-8xl font-bold md:mt-4">Welcome to PCP</h1>
-        <p className="text-3xl md:text-4xl text-black">
+        <h1 className="text-6xl md:text-8xl font-bold md:mt-4">
+          Welcome to PCP
+        </h1>
+        <div className="text-3xl p-2 h-10 md:text-4xl text-black">
           {/* "Start the foundation of your dream" */}
           <div
-      style={{
-        color: textColor,
-      }}
-    >
-      <TypeAnimation
-        sequence={[
-          'Start the',
-          800,
-          () => setTextColor('aqua'),
-          'Start the foundation of',
-          800,
-          () => setTextColor('deeppink'),
-          'Start the foundation of your dream',
-          1000,
-          () => setTextColor('darkkhaki'),
-          '',
-        ]}
-        repeat={Infinity}
-      />
-    </div>
-        </p>
+            style={{
+              color: textColor,
+            }}
+          >
+            <TypeAnimation
+              sequence={[
+                "Start the",
+                800,
+                () => setTextColor("aqua"),
+                "Start the foundation of",
+                800,
+                () => setTextColor("deeppink"),
+                "Start the foundation of your dream",
+                1000,
+                () => setTextColor("darkkhaki"),
+                "",
+              ]}
+              repeat={Infinity}
+            />
+          </div>
+        </div>
       </div>
 
       {/* Image Slider */}
-      <div className="relative flex w-full h-screen justify-center items-center overflow-hidden rounded-xl shadow-lg m-auto pb-6">
-        <Image
-          src={sliderImages[currentImage]}
-          alt={`Slider ${currentImage}`}
-          width={400}
-          height={200}
-          className=" object-center cursor-pointer transition duration-500"
-          onClick={() => setModalImage(sliderImages[currentImage])}
-        />
+      <div className="relative flex flex-col md:flex-row w-full h-fit md:h-[800px] justify-center items-center gap-6 rounded-xl m-auto p-6">
+        {sliderImages?.map((pic, i)=>(
+          <div key={i} className="flex justify-center items-center p-4 w-fit h-fit shadow-lg hover:shadow-xl rounded">
+
+            <Image
+            src={pic}
+            alt={pic}
+            width={500}
+            height={600}
+            className=" object-fill flex w-full md:w-[400px] h-[600px] cursor-pointer"
+            onClick={() => setModalImage(pic)}
+            />
+          </div>
+        ))}
       </div>
 
       {/* Modal */}
@@ -114,6 +123,10 @@ export default function HomePage() {
           </div>
         </div>
       )}
+
+      <div className="flex justify-center items-center w-full mt-3">
+        <ContactPage/>
+      </div>
     </div>
   );
 }

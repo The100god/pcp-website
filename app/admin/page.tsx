@@ -3,29 +3,40 @@
 import { useEffect, useState } from "react";
 import { auth } from "../../lib/firebase";
 import { useRouter } from "next/navigation";
-import { User } from "firebase/auth";
+// import { User } from "firebase/auth";
+import { useAuth } from "../context/AuthContext";
 
 const adminEmails = process.env.NEXT_PUBLIC_ADMIN_EMAILS?.split(",") || [];
 
 export default function AdminPanel() {
-  const [user, setUser] = useState<User|null>(null);
+const user = useAuth();
   const [students, setStudents] = useState<string[][]>([]);
   const [headers, setHeaders] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const router = useRouter();
 
+  // useEffect(() => {
+  //   const unsub = auth.onAuthStateChanged((u) => {
+  //     setUser(u);
+  //     if (u && adminEmails.includes(u.email || "")) {
+  //       fetchStudents();
+  //     } else {
+  //       router.push("/");
+  //     }
+  //     setLoading(false);
+  //   });
+  //   return () => unsub();
+  // }, [router]);
   useEffect(() => {
-    const unsub = auth.onAuthStateChanged((u) => {
-      setUser(u);
-      if (u && adminEmails.includes(u.email || "")) {
-        fetchStudents();
-      } else {
-        router.push("/");
-      }
-      setLoading(false);
-    });
-    return () => unsub();
-  }, [router]);
+  if (!user) return;
+
+  if (adminEmails.includes(user.email)) {
+    fetchStudents();
+  } else {
+    router.push("/");
+  }
+  setLoading(false);
+}, [user, router]);
 
   const fetchStudents = async () => {
     const res = await fetch("/api/sheets?sheet=pcp");
@@ -63,7 +74,7 @@ export default function AdminPanel() {
         <table className="w-full border">
           <thead>
             <tr className="bg-gray-200">
-              {headers.map((h, idx) => (
+              {headers?.map((h, idx) => (
                 <th key={idx} className="px-4 py-2 border">
                   {h}
                 </th>
@@ -71,9 +82,9 @@ export default function AdminPanel() {
             </tr>
           </thead>
           <tbody>
-            {students.map((row, i) => (
+            {students?.map((row, i) => (
               <tr key={i} className="even:bg-gray-50">
-                {row.map((col, j) => (
+                {row?.map((col, j) => (
                   <td key={j} className="border px-4 py-2">
                     {col}
                   </td>

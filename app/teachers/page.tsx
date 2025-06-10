@@ -69,7 +69,7 @@ export default function TeachersPage() {
     <main className="max-w-6xl mx-auto p-6">
       <h1 className="text-4xl font-bold mb-8 text-center mt-8 md:mt-0">Our Teachers</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center">
-        {teachers.map((teacher, index) => (
+        {teachers?.map((teacher, index) => (
           <TeacherCard
             key={index} {...teacher}
           />
