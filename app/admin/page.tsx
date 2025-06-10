@@ -1,7 +1,7 @@
 // @typescript-eslint/no-explicit-any
 "use client";
 import { useEffect, useState } from "react";
-import { auth } from "../../lib/firebase";
+// import { auth } from "../../lib/firebase";
 import { useRouter } from "next/navigation";
 // import { User } from "firebase/auth";
 import { useAuth } from "../context/AuthContext";

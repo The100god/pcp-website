@@ -1,18 +1,18 @@
 // @typescript-eslint/no-explicit-any
 "use client"
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { auth } from "../../../lib/firebase";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/16/solid";
 import Image from "next/image";
 import { useAuth } from "@/app/context/AuthContext";
 
 const adminEmails = process.env.NEXT_PUBLIC_ADMIN_EMAILS?.split(",") || [];
-interface userProp{
-  email:string;
-}
+// interface userProp{
+//   email:string;
+// }
 export default function Navbar() {
   // const [user, setUser] = useState<userProp|null>(null);
   const user = useAuth();
