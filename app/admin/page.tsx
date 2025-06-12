@@ -70,7 +70,7 @@ const user = useAuth();
       </a>
       </div>
 
-      <div className="overflow-x-auto mt-8">
+      <div className="overflow-x-auto mx-auto mt-8">
         <table className="w-full border">
           <thead>
             <tr className="bg-gray-200">

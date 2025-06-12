@@ -11,6 +11,9 @@ import {
 import { useRouter } from "next/navigation";
 import { useAuth } from "../context/AuthContext";
 
+
+const adminEmails = process.env.NEXT_PUBLIC_ADMIN_EMAILS?.split(",") || [];
+
 export default function Login() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -42,6 +45,9 @@ export default function Login() {
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       await updateProfile(userCredential.user, { displayName: fullName });
       // Save to Google Sheet using fetch
+
+      const isAdmin = adminEmails.includes(email);
+      if (!isAdmin) {
     const response = await fetch("/api/sheets", {
       method: "POST",
       headers: {
@@ -57,6 +63,7 @@ export default function Login() {
     if (!response.ok) {
       const errorData = await response.json();
       throw new Error(errorData.error || "Failed to save to sheet");
+    }
     }
       alert("Signup successful!");
       router.push("/home");

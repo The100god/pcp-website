@@ -10,7 +10,7 @@ export default function Footer() {
           <h3 className="text-lg font-semibold mb-2">Institute Address</h3>
           <p>PCP (Pragati Career Point)</p>
           <p>2-A-3, opp. Ambedker park</p>
-          <p>Pratap Nagar, Jodhpur - 110001</p>
+          <p>Pratap Nagar, Jodhpur - 342003</p>
         </div>
 
         {/* Contact Info */}
@@ -18,7 +18,7 @@ export default function Footer() {
           <h3 className="text-lg font-semibold mb-2">Contact Us</h3>
           <p>📞 +91 7851902551</p>
           <p>📞 +91 8107828143</p>
-          <p>📧 pcp@gmail.com</p>
+          <p>📧 pcpqualityeducation@gmail.com</p>
         </div>
 
         {/* Navigation Links */}
