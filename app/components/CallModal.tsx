@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 // components/CallModal.tsx
 import { useState } from "react";
 
@@ -9,14 +10,15 @@ export default function CallModal() {
     <>
       {/* Floating Call Icon */}
       <button
-        onClick={() => setOpen(true)}
-        className="fixed bottom-6 right-6 bg-green-600 hover:bg-green-700 text-white p-4 rounded-full shadow-lg z-50"
+        onClick={() => setOpen(!open)}
+        className="fixed bottom-6 right-6 cursor-pointer bg-green-600 hover:bg-green-700 text-white p-4 rounded-full shadow-lg z-50"
         aria-label="Open contact modal"
       >
-        <img
+        <Image
           src="/icons/call.gif"
           alt="phone"
           className="md:w-16 w-6 md:h-16 h-6 bg-transparent rounded-full"
+          width={0} height={0}
         />
       </button>
 
@@ -27,7 +29,7 @@ export default function CallModal() {
             {/* Close Button */}
             <button
               onClick={() => setOpen(false)}
-              className="absolute top-2 right-2 text-gray-600 hover:text-black text-xl"
+              className="absolute top-2 right-2 text-white bg-red-600 hover:bg-red-700 font-medium text-xl cursor-pointer px-2 py-1 rounded-lg"
             >
               ✕
             </button>

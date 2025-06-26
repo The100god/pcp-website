@@ -13,6 +13,7 @@ import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import { Progress } from "../components/ui/progress";
 import { CheckCircle, XCircle, HelpCircle } from "lucide-react";
+import Image from "next/image";
 
 const quizQuestions = [
   {
@@ -96,7 +97,7 @@ export function InteractiveQuiz() {
             <CardHeader>
               <div className="mx-auto mb-4">
                 {/* <Trophy className="h-16 w-16 text-yellow-500" /> */}
-                <img src="/icons/win.gif" alt="win" className="w-20 h-20 bg-transparent"/>
+                <Image src="/icons/win.gif" alt="win" className="w-20 h-20 bg-transparent" width={80} height={80}/>
               </div>
               <CardTitle className="text-2xl">Quiz Completed!</CardTitle>
               <CardDescription>
@@ -127,7 +128,7 @@ export function InteractiveQuiz() {
     <section className="py-16 bg-gradient-to-r from-purple-50 to-pink-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
-          <h2 className="flex justify-center items-center gap-2 text-3xl md:text-4xl font-bold mb-4">Quick Practice Quiz <img src="/icons/quiz.gif" alt="phone" className="w-20 h-20 bg-transparent"/></h2>
+          <h2 className="flex justify-center items-center gap-2 text-3xl md:text-4xl font-bold mb-4">Quick Practice Quiz <Image src="/icons/quiz.gif" alt="phone" className="w-20 h-20 bg-transparent" width={80} height={80}/></h2>
           <p className="text-lg text-muted-foreground">Test your JEE & NEET preparation with these sample questions!</p>
         </div>
 

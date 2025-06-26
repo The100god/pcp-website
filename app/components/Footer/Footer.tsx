@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 // components/Footer.tsx
@@ -16,9 +17,9 @@ export default function Footer() {
         {/* Contact Info */}
         <div>
           <h3 className="text-lg font-semibold mb-2">Contact Us</h3>
-          <p className="flex items-center justify-start gap-1"><img src="/icons/phone.gif" alt="phone" className="w-8 h-8 bg-transparent"/> +91 7851902551</p>
-          <p className="flex items-center justify-start gap-1"><img src="/icons/phone.gif" alt="phone" className="w-8 h-8 bg-transparent"/> +91 8107828143</p>
-          <p className="flex items-center justify-start gap-4"><img src="/icons/mail.gif" alt="phone" className="w-6 h-6 bg-transparent"/> pcpqualityeducation@gmail.com</p>
+          <p className="flex items-center justify-start gap-1"><Image src="/icons/phone.gif" alt="phone" className="w-8 h-8 bg-transparent" width={32} height={32}/> +91 7851902551</p>
+          <p className="flex items-center justify-start gap-1"><Image src="/icons/phone.gif" alt="phone" className="w-8 h-8 bg-transparent" width={32} height={32}/> +91 8107828143</p>
+          <p className="flex items-center justify-start gap-4"><Image src="/icons/mail.gif" alt="phone" className="w-6 h-6 bg-transparent" width={24} height={24}/> pcpqualityeducation@gmail.com</p>
         </div>
 
         {/* Navigation Links */}
