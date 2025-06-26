@@ -11,7 +11,7 @@ export default function TopMarqueeBanner() {
         animate={{ x: ['100%', '-100%'] }}
         transition={{
           repeat: Infinity,
-          duration: 25,
+          duration: 20,
           ease: 'linear',
         }}
       >

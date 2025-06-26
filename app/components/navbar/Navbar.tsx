@@ -49,37 +49,37 @@ export default function Navbar() {
         <Image className="w-15 h-15 rounded-full" width={60} height={60} src="/pcp-logo.jpg" alt="pcp" />
       </Link>
       <div className="hidden md:flex space-x-4">
-        <Link href="/home" className="px-2 py-1 bg-green-400 hover:bg-green-300 font-medium text-black rounded">Dashboard</Link>
-        <Link href="/vision" className="px-2 py-1 bg-green-400 hover:bg-green-300 font-medium text-black rounded">Vision</Link>
-        <Link href="/teachers" className="px-2 py-1 bg-green-400 hover:bg-green-300 font-medium text-black rounded">Teachers</Link>
-        <Link href="/institute" className="px-2 py-1 bg-green-400 hover:bg-green-300 font-medium text-black rounded">About us</Link>
-        <Link href="/contact" className="px-2 py-1 bg-green-400 hover:bg-green-300 font-medium text-black rounded">Contact</Link>
+        <Link href="/home" className="px-2 py-1 bg-gray-800 text-white hover:bg-gray-700 font-medium rounded">Dashboard</Link>
+        <Link href="/vision" className="px-2 py-1 bg-gray-800 text-white hover:bg-gray-700 font-medium rounded">Vision</Link>
+        <Link href="/teachers" className="px-2 py-1 bg-gray-800 text-white hover:bg-gray-700 font-medium rounded">Teachers</Link>
+        <Link href="/institute" className="px-2 py-1 bg-gray-800 text-white hover:bg-gray-700 font-medium rounded">About us</Link>
+        <Link href="/contact" className="px-2 py-1 bg-gray-800 text-white hover:bg-gray-700 font-medium rounded">Contact</Link>
         {user? (
           <>
-            {adminEmails?.includes(user.email) && <Link href="/admin" className="px-2 py-1 bg-green-400 hover:bg-green-300 font-medium text-black rounded">Admin</Link>}
+            {adminEmails?.includes(user.email) && <Link href="/admin" className="px-2 py-1 bg-gray-800 text-white hover:bg-gray-700 font-medium rounded">Admin</Link>}
             <button onClick={logout} className="ml-2 bg-red-500 py-1 px-2 rounded cursor-pointer">Logout</button>
           </>
         ) : (
-          <Link href="/login" className="px-2 py-1 bg-blue-700 hover:bg-blue-600 font-medium text-white rounded">Login</Link>
+          <Link href="/login" className="px-2 py-1 bg-green-700 hover:bg-green-600 font-medium text-white rounded">Login</Link>
         )}
       </div>
       {/* Mobile Nav Dropdown */}
       {openSidebar && (
         <div className="absolute top-20 mt-2 w-full px-6 md:hidden flex flex-col items-start bg-white text-black py-4 rounded-b-md shadow-md z-30">
-          <Link href="/home" className="mobile-link py-2 hover:bg-green-300" onClick={() => setOpenSidebar(false)}>Dashboard</Link>
-          <Link href="/vision" className="mobile-link py-2 hover:bg-green-300" onClick={() => setOpenSidebar(false)}>Vision</Link>
-          <Link href="/teachers" className="mobile-link py-2 hover:bg-green-300" onClick={() => setOpenSidebar(false)}>Teachers</Link>
-          <Link href="/institute" className="mobile-link py-2 hover:bg-green-300" onClick={() => setOpenSidebar(false)}>About us</Link>
-          <Link href="/contact" className="mobile-link py-2 hover:bg-green-300" onClick={() => setOpenSidebar(false)}>Contact</Link>
+          <Link href="/home" className="mobile-link py-2 hover:bg-gray-700" onClick={() => setOpenSidebar(false)}>Dashboard</Link>
+          <Link href="/vision" className="mobile-link py-2 hover:bg-gray-700" onClick={() => setOpenSidebar(false)}>Vision</Link>
+          <Link href="/teachers" className="mobile-link py-2 hover:bg-gray-700" onClick={() => setOpenSidebar(false)}>Teachers</Link>
+          <Link href="/institute" className="mobile-link py-2 hover:bg-gray-700" onClick={() => setOpenSidebar(false)}>About us</Link>
+          <Link href="/contact" className="mobile-link py-2 hover:bg-gray-700" onClick={() => setOpenSidebar(false)}>Contact</Link>
           {user ? (
             <>
               {adminEmails?.includes(user.email) && (
-                <Link href="/admin" className="mobile-link py-2 hover:bg-green-300" onClick={() => setOpenSidebar(false)}>Admin</Link>
+                <Link href="/admin" className="mobile-link py-2 hover:bg-gray-700" onClick={() => setOpenSidebar(false)}>Admin</Link>
               )}
               <button onClick={() => { logout(); setOpenSidebar(false); }} className="text-red-600 font-semibold mt-2">Logout</button>
             </>
           ) : (
-            <Link href="/login" className="mobile-link py-2 hover:bg-green-300" onClick={() => setOpenSidebar(false)}>Login</Link>
+            <Link href="/login" className="mobile-link py-2 hover:bg-green-700" onClick={() => setOpenSidebar(false)}>Login</Link>
           )}
         </div>
       )}

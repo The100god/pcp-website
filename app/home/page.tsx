@@ -88,13 +88,13 @@ export default function HomePage() {
               sequence={[
                 "Start the",
                 800,
-                () => setTextColor("aqua"),
+                () => setTextColor("black"),
                 "Start the foundation of",
                 800,
-                () => setTextColor("deeppink"),
+                () => setTextColor("black"),
                 "Start the foundation of your dream",
                 1000,
-                () => setTextColor("darkkhaki"),
+                () => setTextColor("black"),
                 "",
               ]}
               repeat={Infinity}
@@ -134,7 +134,7 @@ export default function HomePage() {
         </div>
         </div>
         
-        <h1 className="w-full text-5xl font-bold">Why PCP?</h1>
+        <h1 className="flex justify-center items-center gap-2 w-full text-5xl font-bold mb-3"><img src="/icons/why.gif" alt="phone" className="w-20 h-20 bg-transparent"/> Why PCP ? </h1>
 
         <div className="flex flex-col justify-center items-center w-full">
           <ol className="flex flex-col justify-start items-start text-xl gap-2 list-disc w-full pl-14">

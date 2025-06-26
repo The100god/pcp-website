@@ -16,9 +16,9 @@ export default function Footer() {
         {/* Contact Info */}
         <div>
           <h3 className="text-lg font-semibold mb-2">Contact Us</h3>
-          <p>📞 +91 7851902551</p>
-          <p>📞 +91 8107828143</p>
-          <p>📧 pcpqualityeducation@gmail.com</p>
+          <p className="flex items-center justify-start gap-1"><img src="/icons/phone.gif" alt="phone" className="w-8 h-8 bg-transparent"/> +91 7851902551</p>
+          <p className="flex items-center justify-start gap-1"><img src="/icons/phone.gif" alt="phone" className="w-8 h-8 bg-transparent"/> +91 8107828143</p>
+          <p className="flex items-center justify-start gap-4"><img src="/icons/mail.gif" alt="phone" className="w-6 h-6 bg-transparent"/> pcpqualityeducation@gmail.com</p>
         </div>
 
         {/* Navigation Links */}
@@ -36,7 +36,7 @@ export default function Footer() {
         {/* Optional: Social or Extra Info */}
         <div>
           <h3 className="text-lg font-semibold mb-2">More Info</h3>
-          <p>Mon – Sat: 9 AM – 5 PM</p>
+          <p>Mon – Sat: 5 PM – 9 PM</p>
           <p>Closed on Sundays</p>
         </div>
       </div>

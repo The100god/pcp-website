@@ -22,15 +22,15 @@ body {
 
   @keyframes glow {
     0%, 100% {
-      box-shadow: 0 0 10px #facc15, 0 0 20px #facc15;
+      box-shadow: 0 0 20px #facc15, 0 0 30px #facc15;
     }
     50% {
-      box-shadow: 0 0 20px #facc15, 0 0 40px #facc15;
+      box-shadow: 0 0 30px #facc15, 0 0 50px #facc15;
     }
   }
 
   .animate-glow {
-    animation: glow 1.5s infinite ease-in-out;
+    animation: glow 1s infinite ease-in-out;
   }
 }
 

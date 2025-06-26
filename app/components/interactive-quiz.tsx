@@ -12,7 +12,7 @@ import {
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import { Progress } from "../components/ui/progress";
-import { CheckCircle, XCircle, HelpCircle, Trophy } from "lucide-react";
+import { CheckCircle, XCircle, HelpCircle } from "lucide-react";
 
 const quizQuestions = [
   {
@@ -95,7 +95,8 @@ export function InteractiveQuiz() {
           <Card className="max-w-2xl mx-auto text-center">
             <CardHeader>
               <div className="mx-auto mb-4">
-                <Trophy className="h-16 w-16 text-yellow-500" />
+                {/* <Trophy className="h-16 w-16 text-yellow-500" /> */}
+                <img src="/icons/win.gif" alt="win" className="w-20 h-20 bg-transparent"/>
               </div>
               <CardTitle className="text-2xl">Quiz Completed!</CardTitle>
               <CardDescription>
@@ -112,8 +113,8 @@ export function InteractiveQuiz() {
               </div>
               <p className="text-lg">You scored {percentage}%</p>
               <div className="flex justify-center space-x-4">
-                <Button onClick={handleLoginRedirect}>Try Again</Button>
-                <Button onClick={handleLoginRedirect}>More Practice Tests</Button>
+                <Button className= "cursor-pointer" onClick={handleLoginRedirect}>Try Again</Button>
+                <Button className= "cursor-pointer" onClick={handleLoginRedirect}>More Practice Tests</Button>
               </div>
             </CardContent>
           </Card>
@@ -126,7 +127,7 @@ export function InteractiveQuiz() {
     <section className="py-16 bg-gradient-to-r from-purple-50 to-pink-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Quick Practice Quiz</h2>
+          <h2 className="flex justify-center items-center gap-2 text-3xl md:text-4xl font-bold mb-4">Quick Practice Quiz <img src="/icons/quiz.gif" alt="phone" className="w-20 h-20 bg-transparent"/></h2>
           <p className="text-lg text-muted-foreground">Test your JEE & NEET preparation with these sample questions!</p>
         </div>
 
@@ -154,7 +155,7 @@ export function InteractiveQuiz() {
                   key={index}
                   onClick={() => handleAnswerSelect(index)}
                   disabled={showResult}
-                  className={`w-full p-4 text-left rounded-lg border transition-colors ${
+                  className={`w-full p-4 text-left rounded-lg border transition-colors cursor-pointer ${
                     selectedAnswer === index
                       ? showResult
                         ? index === quizQuestions[currentQuestion].correct
@@ -190,15 +191,16 @@ export function InteractiveQuiz() {
               </div>
             )}
 
-            <div className="flex justify-between pt-4">
+            <div className="flex justify-between pt-4 " >
               <Button
                 variant={"outline"}
                 onClick={() => setCurrentQuestion(Math.max(0, currentQuestion - 1))}
                 disabled={currentQuestion === 0 || showResult}
+                className= "cursor-pointer"
               >
                 Previous
               </Button>
-              <Button onClick={handleNextQuestion} disabled={selectedAnswer === null || showResult}>
+              <Button onClick={handleNextQuestion} disabled={selectedAnswer === null || showResult} className=" cursor-pointer">
                 {currentQuestion === quizQuestions.length - 1 ? "Finish Quiz" : "Next Question"}
               </Button>
             </div>

@@ -6,6 +6,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import ClientThemeProvider from "./components/ClientThemeProvider/ClientThemeProvider";
 import { AuthProvider } from "./context/AuthContext";
 import Footer from "./components/Footer/Footer";
+import CallModal from "./components/CallModal";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,8 +44,10 @@ export default function RootLayout({
         </div>
         <Footer />
         </AuthProvider>
+        <CallModal />
   </div>
 </ClientThemeProvider>
+
       </body>
     </html>
   );
