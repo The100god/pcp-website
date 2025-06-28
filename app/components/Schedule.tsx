@@ -6,7 +6,7 @@ import { useAuth } from "../context/AuthContext";
 const adminEmails = process.env.NEXT_PUBLIC_ADMIN_EMAILS?.split(",") || [];
 
 const classOptions = ["9", "10", "11", "12"];
-const subjectOptions = ["Physics", "Chemistry", "Math"];
+const subjectOptions = ["Physics", "Chemistry", "Math", "Hindi", "English"];
 const dayOptions = [
   "Monday",
   "Tuesday",
@@ -78,7 +78,7 @@ export default function ScheduleAdmin() {
         }),
       });
 
-      setForm({ ...form, teacher: "", start: "", end: "" });
+      setForm({ ...form, class: "", subject: "", teacher: "", day:"", start: "", end: "" });
       fetchEntries();
     } catch (error) {
       console.error("Failed to add schedule:", error);
