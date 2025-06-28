@@ -2,6 +2,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext"; // adjust path if needed
+import Image from "next/image";
 
 const adminEmails = process.env.NEXT_PUBLIC_ADMIN_EMAILS?.split(",") || [];
 interface Query {
@@ -117,7 +118,8 @@ export default function ContactPage() {
   // Normal Contact Form
   return (
     <main className="max-w-md mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-6 mt-8 md:mt-0">Contact Us</h1>
+      <h1 className=" flex justify-center items-center gap-2 text-center text-4xl mx-auto font-bold mb-8 mt-8 md:mt-0">
+              <Image src="/icons/icons8-people.gif" alt="gif" className="w-10 h-10" width={40} height={40}/>Contact Us</h1>
       <input
         type="text"
         placeholder="Your Name"

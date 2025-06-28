@@ -9,6 +9,8 @@ const teachers = [
     name: "Mrs. Sharma",
     subject: "Math",
     imageUrl: "/teacher/teacher1.jpg",
+    description: "Passionate about connecting students to the wonders of life science.",
+    experience: "10+ years of NEET mentoring",
     socials: {
       facebook: "https://facebook.com/",
       twitter: "https://twitter.com/",
@@ -19,6 +21,8 @@ const teachers = [
     name: "Mr. Singh",
     subject: "Science",
     imageUrl: "/teacher/teacher2.jpg",
+    description: "Passionate about connecting students to the wonders of life science.",
+    experience: "10+ years of NEET mentoring",
     socials: {
       facebook: "https://facebook.com/",
       twitter: "https://twitter.com/",
@@ -29,6 +33,8 @@ const teachers = [
     name: "Ms. Gupta",
     subject: "English",
     imageUrl: "/teacher/teacher3.jpg",
+    description: "Passionate about connecting students to the wonders of life science.",
+    experience: "10+ years of NEET mentoring",
     socials: {
       facebook: "https://facebook.com/",
       twitter: "https://twitter.com/",
@@ -39,6 +45,8 @@ const teachers = [
     name: "Mrs. Sharma",
     subject: "Math",
     imageUrl: "/teacher/teacher1.jpg",
+    description: "Passionate about connecting students to the wonders of life science.",
+    experience: "10+ years of NEET mentoring",
     socials: {
       facebook: "https://facebook.com/",
       twitter: "https://twitter.com/",
@@ -49,6 +57,8 @@ const teachers = [
     name: "Mr. Singh",
     subject: "Science",
     imageUrl: "/teacher/teacher2.jpg",
+    description: "Passionate about connecting students to the wonders of life science.",
+    experience: "10+ years of NEET mentoring",
     socials: {
       facebook: "https://facebook.com/",
       twitter: "https://twitter.com/",
@@ -59,6 +69,8 @@ const teachers = [
     name: "Ms. Gupta",
     subject: "English",
     imageUrl: "/teacher/teacher3.jpg",
+    description: "Passionate about connecting students to the wonders of life science.",
+    experience: "10+ years of NEET mentoring",
     socials: {
       facebook: "https://facebook.com/",
       twitter: "https://twitter.com/",
@@ -77,14 +89,20 @@ export default function TeachersPage() {
   //   }, [user, router]);
   return (
     <main className="max-w-6xl mx-auto p-6">
-      <h1 className="text-4xl font-bold mb-8 text-center mt-8 md:mt-0">Our Teachers</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center">
-        {teachers?.map((teacher, index) => (
-          <TeacherCard
-            key={index} {...teacher}
-          />
-        ))}
-      </div>
-    </main>
+  <h1 className="text-4xl md:text-5xl font-extrabold mb-10 text-center text-blue-900 mt-10">
+    Meet Our Expert Teachers
+  </h1>
+
+  <p className="text-center max-w-3xl mx-auto text-gray-700 text-lg mb-12">
+    At <span className="font-semibold text-blue-700">PCP Quality Education</span>, our teachers are more than educators — they are mentors, motivators, and guides. With years of proven success in JEE and NEET coaching, they bring dedication and expertise to every class.
+  </p>
+
+  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 justify-items-center">
+    {teachers.length>0 && teachers.map((teacher, index) => (
+      <TeacherCard key={index} {...teacher} />
+    ))}
+  </div>
+</main>
+
   );
 }

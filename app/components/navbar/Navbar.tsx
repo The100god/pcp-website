@@ -56,7 +56,9 @@ export default function Navbar() {
         <Link href="/contact" className="px-2 py-1 bg-gray-800 text-white hover:bg-gray-700 font-medium rounded">Contact</Link>
         {user? (
           <>
-            {adminEmails?.includes(user.email) && <Link href="/admin" className="px-2 py-1 bg-gray-800 text-white hover:bg-gray-700 font-medium rounded">Admin</Link>}
+            {adminEmails?.includes(user.email) ? <Link href="/admin" className="px-2 py-1 bg-gray-800 text-white hover:bg-gray-700 font-medium rounded">Admin</Link>:
+            <Link href="/schedule" className="px-2 py-1 bg-gray-800 text-white hover:bg-gray-700 font-medium rounded">Schedule</Link>
+            }
             <button onClick={logout} className="ml-2 bg-red-500 py-1 px-2 rounded cursor-pointer">Logout</button>
           </>
         ) : (
@@ -73,9 +75,10 @@ export default function Navbar() {
           <Link href="/contact" className="mobile-link py-2 hover:bg-gray-700" onClick={() => setOpenSidebar(false)}>Contact</Link>
           {user ? (
             <>
-              {adminEmails?.includes(user.email) && (
-                <Link href="/admin" className="mobile-link py-2 hover:bg-gray-700" onClick={() => setOpenSidebar(false)}>Admin</Link>
-              )}
+              {adminEmails?.includes(user.email) ?
+                <Link href="/admin" className="mobile-link py-2 hover:bg-gray-700" onClick={() => setOpenSidebar(false)}>Admin</Link>:
+                <Link href="/schedule" className="mobile-link py-2 hover:bg-gray-700" onClick={() => setOpenSidebar(false)}>Schedule</Link>
+              }
               <button onClick={() => { logout(); setOpenSidebar(false); }} className="text-red-600 font-semibold mt-2">Logout</button>
             </>
           ) : (

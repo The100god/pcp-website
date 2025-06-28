@@ -33,21 +33,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-
-<ClientThemeProvider>
-  <div className="flex flex-col min-h-screen">
-
-        <AuthProvider>
-        <Navbar />
-        <div className="flex flex-grow w-full h-full mt-14 md:mt-20">
-        {children}
-        </div>
-        <Footer />
-        </AuthProvider>
-        <CallModal />
-  </div>
-</ClientThemeProvider>
-
+        <ClientThemeProvider>
+          <div className="flex flex-col min-h-screen">
+            <AuthProvider>
+              <Navbar />
+              <div className="flex flex-grow w-full h-full mt-14 md:mt-20">
+                {children}
+              </div>
+              <Footer />
+            </AuthProvider>
+            <CallModal />
+          </div>
+        </ClientThemeProvider>
       </body>
     </html>
   );
