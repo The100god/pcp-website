@@ -6,7 +6,7 @@ import Image from "next/image";
 import { TypeAnimation } from "react-type-animation";
 // import { useAuth } from "../context/AuthContext";
 import { InteractiveQuiz } from "../components/interactive-quiz";
-import GlowBadge from "../components/GlowBadge";
+// import GlowBadge from "../components/GlowBadge";
 import Badge from "../components/AnimatedBadge";
 import TopMarqueeBanner from "../components/TopMarqueeBanner";
 import ContactForm from "../components/ContactForm";
@@ -158,7 +158,7 @@ export default function HomePage() {
                 Limited Time Offers
               </h2>
               <p className="text-gray-600">
-                Don't miss out on these exclusive opportunities
+                {"Don't miss out on these exclusive opportunities"}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
