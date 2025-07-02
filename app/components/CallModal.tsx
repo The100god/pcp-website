@@ -39,14 +39,14 @@ export default function CallModal() {
             <div className="space-y-2 text-gray-800">
               <p>
                 <strong>Phone:</strong>{" "}
-                <a href="tel:+918107828143" className="text-blue-600">
-                  +91 8107828143
+                <a href="tel:+917851902551" className="text-blue-600">
+                  +91 7851902551
                 </a>
               </p>
               <p>
                 <strong>Phone:</strong>{" "}
-                <a href="tel:+917851902551" className="text-blue-600">
-                  +91 7851902551
+                <a href="tel:+918107828143" className="text-blue-600">
+                  +91 8107828143
                 </a>
               </p>
               <p>
