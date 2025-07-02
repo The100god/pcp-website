@@ -88,21 +88,26 @@ export default function TeachersPage() {
   //     }
   //   }, [user, router]);
   return (
-    <main className="max-w-6xl mx-auto p-6">
-  <h1 className="text-4xl md:text-5xl font-extrabold mb-10 text-center text-blue-900 mt-10">
-    Meet Our Expert Teachers
-  </h1>
+    <main className="py-16 px-4 sm:px-8 w-full">
+  <div className="max-w-7xl mx-auto">
+    <div className="text-center mb-16">
+      <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-700 to-blue-900 bg-clip-text text-transparent mb-6">
+        Meet Our Expert Teachers
+      </h1>
+      <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-blue-700 mx-auto mb-6"></div>
+      <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+        At <span className="font-bold text-blue-700">PCP Quality Education</span>, our teachers are more than educators — they are mentors, motivators, and guides. With years of proven success in JEE and NEET coaching, they bring dedication and expertise to every class.
+      </p>
+    </div>
 
-  <p className="text-center max-w-3xl mx-auto text-gray-700 text-lg mb-12">
-    At <span className="font-semibold text-blue-700">PCP Quality Education</span>, our teachers are more than educators — they are mentors, motivators, and guides. With years of proven success in JEE and NEET coaching, they bring dedication and expertise to every class.
-  </p>
-
-  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 justify-items-center">
-    {teachers.length>0 && teachers.map((teacher, index) => (
-      <TeacherCard key={index} {...teacher} />
-    ))}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
+      {teachers.map((teacher, index) => (
+        <TeacherCard key={index} {...teacher} />
+      ))}
+    </div>
   </div>
 </main>
+
 
   );
 }
